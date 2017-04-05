@@ -26,7 +26,7 @@ class Terminal {
     }
     else if (line1.length == 2 && line1.forall(isNumeric)) {
 
-      val line2: List[String] = scala.io.StdIn.readLine("  ").split("").toList
+      val line2: List[String] = scala.io.StdIn.readLine().split("").toList
 
       val args: List[String] = line1 ::: line2
       val cmd = "run"
