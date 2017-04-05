@@ -1,3 +1,4 @@
+
 /** Cell.scala
   * Created by Cody Shepherd on 4/3/2017.
   */
@@ -37,8 +38,6 @@
   * of T() cells. Both of these "features" seem like they might be a lot of work for fairly little payoff
   * in terms of performance.
   * */
-package myCell
-
 /** A set of grid coordinates, for explicit typing. */
 sealed class Pair(val x: Int, val y: Int) {}
 

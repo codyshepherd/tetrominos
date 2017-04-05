@@ -1,10 +1,8 @@
 /** Board.scala
   * Created by Cody Shepherd on 4/3/2017.
   */
-import myCell._
-import sun.security.pkcs.ContentInfo
-
 import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 /** The Board class controls all the in-game action, including initialization and attempts to find a
   * solution.
@@ -25,6 +23,7 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     for (i<-Array.range(0,h)) yield
       for (j<-Array.range(0,w); l = labels.next) yield new Cell(label = l, black = if (l%2==0) true else false)
   }
+  var solution: ListBuffer[Footprint] = ListBuffer()
 
   /** Returns a pretty-print string of the grid state. */
   override def toString: String = {
@@ -37,15 +36,54 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     st
   }
 
+  def fancyPrint: String = {
+    val letters = ('a' to 'z').toList.take(solution.length)
+    var st = for(i<-Array.range(0,h)) yield for (j<-Array.range(0,w)) yield '#'
+
+    for((fp, letter) <- solution zip letters) {
+      var loc = getNextUnmarkedPos
+      loc match {
+        case None => return "Failure in printing."
+        case Some(p) => {
+          for (c<-fp){
+            st(p.x + c.x)(p.y + c.y) = letter
+            grid(p.x + c.x)(p.y + c.y).marked = true
+          }
+        }
+      }
+    }
+
+    //unmarkAll
+
+    var str = ""
+    for (row<-st) {
+      for (char <- row)
+        str += char
+      str += '\n'
+    }
+    str
+  }
+
+  def unmarkAll: Boolean = {
+    for (row<-grid)
+      for (item<-row)
+        item.marked = false
+    true
+  }
+
   /** Returns whether or not a solution was found. Also prints the solution grid state and solution permutation
     * to the console.
     */
   def game(): Boolean = {
     for (p<-bag.permutations) {
       if (solve(p)) {
+        unmarkAll
+        println(fancyPrint)
+        /*
         print(this)
         println("\nSolved!")
         println(p)
+        */
         //scala.io.StdIn.readLine()
         return true
       }
@@ -109,6 +147,19 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     None
   }
 
+  private def getNextUnmarkedPos: Option[Pair] = {
+    var i = 0
+    var j = 0
+    for (row<-grid){
+      j = row.indexWhere(_.marked == false)
+      if (j >= 0)
+        return Some(new Pair(i, j))
+      else
+        i += 1
+    }
+    None
+  }
+
   /** Returns whether or not the given tile with the given orientation could be placed at the given location.
     *
     * This function will check for off-grid placement and overlap of any cells in the footprint.
@@ -137,6 +188,8 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
       grid(loc.x + p.x)(loc.y + p.y).covered = true
       grid(loc.x + p.x)(loc.y + p.y).contents = Option(tile)
     }
+
+    solution += ft
 
     /*
     print(this)
@@ -212,6 +265,8 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
       grid(loc.x + p.x)(loc.y + p.y).covered = false
       grid(loc.x + p.x)(loc.y + p.y).contents = None
     }
+
+    solution = solution.dropRight(1)
 
     /*
     print(this)

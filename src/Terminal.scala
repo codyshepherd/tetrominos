@@ -1,8 +1,6 @@
 /** Terminal.scala
   * Created by Cody Shepherd on 4/4/2017.
   */
-import myCell._
-
 import scala.collection.mutable.ListBuffer
 import scala.util.Try
 
@@ -17,20 +15,33 @@ class Terminal {
 
   /** The terminal's runtime loop.  */
   while(true) {
-    var line = scala.io.StdIn.readLine("> ").split(" ")
-    var cmd = line(0)
-    var args = line.drop(1).toList
+    val line1: List[String] = scala.io.StdIn.readLine("> ").split(" ").toList
 
-    if(cmds.contains(cmd)) {
+    if (line1.contains("exit")){
+      var cmd = "exit"
       var fn = cmds(cmd)
+      fn(List())
+      println("This will never print.")
+    }
+    else if (line1.length == 2 && line1.forall(isNumeric)) {
+
+      val line2: List[String] = scala.io.StdIn.readLine("  ").split("").toList
+
+      val args: List[String] = line1 ::: line2
+      val cmd = "run"
+      val fn = cmds(cmd)
       fn(args)
-      println("Done.")
+      //println("Done.")
     }
-    else{
+    else
       println("That is not a valid command.")
-    }
 
   }
+
+  /** This helper function comes from this Stack Overflow page:
+    * http://stackoverflow.com/questions/28134729/how-to-check-whether-all-elements-in-list-are-numeric
+    */
+  def isNumeric(input: String): Boolean = input.forall(_.isDigit)
 
   /** A command that causes a system exit.  */
   def exit(args: List[String]): Boolean = {
@@ -91,10 +102,10 @@ class Terminal {
       case "I" => Some(I())
       case "L" => Some(L())
       case "P" => Some(P())
-      case "S" => Some(S())
-      case "Z" => Some(Z())
+      case "S" | "5" => Some(S())
+      case "Z" | "2" => Some(Z())
       case "T" => Some(T())
-      case "O" => Some(O())
+      case "O" | "0" => Some(O())
       case _ => None
     }
   }
