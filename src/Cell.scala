@@ -69,7 +69,7 @@ case class L() extends Tile {
     new Footprint(List(new Pair(0,0), new Pair(1,0), new Pair(2,0), new Pair(2,1))),
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(0,2), new Pair(1,0))),
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(1,1), new Pair(2,1))),
-    new Footprint(List(new Pair(0,2), new Pair(1,0), new Pair(1,1), new Pair(1,2))) )
+    new Footprint(List(new Pair(-1,2), new Pair(0,0), new Pair(0,1), new Pair(0,2))) )
 
   /** Iterator definition (using the private list above) to facilitate list comprehensions and other
     * iterator behavior.  */
@@ -84,7 +84,7 @@ case class P() extends Tile {
   private val positions = List(
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(1,0), new Pair(2,0))),
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(0,2), new Pair(1,2))) ,
-    new Footprint(List(new Pair(0,1), new Pair(1,1), new Pair(2,0), new Pair(2,1))) ,
+    new Footprint(List(new Pair(0,0), new Pair(1,0), new Pair(2,0), new Pair(2,-1))) ,
     new Footprint(List(new Pair(0,0), new Pair(1,0), new Pair(1,1), new Pair(1,2))) )
 
   /** Iterator definition (using the private list above) to facilitate list comprehensions and other
@@ -127,8 +127,8 @@ case class Z() extends Tile {
 case class T() extends Tile {
   private val positions = List(
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(0,2), new Pair(1,1))),
-    new Footprint(List(new Pair(0,1), new Pair(1,0), new Pair(1,1), new Pair(2,1))) ,
-    new Footprint(List(new Pair(0,1), new Pair(1,0), new Pair(1,1), new Pair(1,2))) ,
+    new Footprint(List(new Pair(0,0), new Pair(1,-1), new Pair(1,0), new Pair(2,0))) ,
+    new Footprint(List(new Pair(0,0), new Pair(1,-1), new Pair(1,0), new Pair(1,1))) ,
     new Footprint(List(new Pair(0,0), new Pair(1,0), new Pair(1,1), new Pair(2,0))) )
 
   /** Iterator definition (using the private list above) to facilitate list comprehensions and other
