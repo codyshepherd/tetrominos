@@ -98,7 +98,7 @@ case class P() extends Tile {
 /** The S Tile  */
 case class S() extends Tile {
   private val positions = List(
-    new Footprint(List(new Pair(0,1), new Pair(0,2), new Pair(1,0), new Pair(1,1))),
+    new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(1,-1), new Pair(1,0))),
     new Footprint(List(new Pair(0,0), new Pair(1,0), new Pair(1,1), new Pair(2,1))) )
 
   /** Iterator definition (using the private list above) to facilitate list comprehensions and other
@@ -113,7 +113,7 @@ case class S() extends Tile {
 case class Z() extends Tile {
   private val positions = List(
     new Footprint(List(new Pair(0,0), new Pair(0,1), new Pair(1,1), new Pair(1,2))),
-    new Footprint(List(new Pair(0,1), new Pair(1,0), new Pair(1,1), new Pair(2,0))) )
+    new Footprint(List(new Pair(0,0), new Pair(1,-1), new Pair(1,0), new Pair(2,-1))) )
 
   /** Iterator definition (using the private list above) to facilitate list comprehensions and other
     * iterator behavior.  */

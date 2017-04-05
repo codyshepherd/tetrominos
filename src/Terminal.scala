@@ -14,8 +14,9 @@ class Terminal {
   )
 
   /** The terminal's runtime loop.  */
-  while(true) {
-    val line1: List[String] = scala.io.StdIn.readLine("> ").split(" ").toList
+  //while(true) {
+    //val line1: List[String] = scala.io.StdIn.readLine("> ").split(" ").toList
+    val line1: List[String] = scala.io.StdIn.readLine().split(" ").toList
 
     if (line1.contains("exit")){
       var cmd = "exit"
@@ -36,7 +37,7 @@ class Terminal {
     else
       println("That is not a valid command.")
 
-  }
+  //}
 
   /** This helper function comes from this Stack Overflow page:
     * http://stackoverflow.com/questions/28134729/how-to-check-whether-all-elements-in-list-are-numeric
