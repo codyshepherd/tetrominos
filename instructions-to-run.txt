@@ -1,0 +1,12 @@
+To run, `cd` to the top level of this project.
+i.e., `ls` should show directories src, out, and tests
+
+1. to compile, execute makefile with `make`
+    This will put compiled binaries in [working directory]/out 
+
+2. run the binary with the following command:
+    `scala -cp [working directory]/out Program`
+
+Appropriately formatted text files can be piped into this program, e.g.:
+
+    `cat tests/test1.txt | scala -cp [working directory]/out Program`
