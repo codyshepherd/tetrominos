@@ -1,10 +1,16 @@
-To run, `cd` to the top level of this project.
-i.e., `ls` should show this file, the Makefile, and directories src and tests
+This program requires Java 8 installed to compile. For some reason, the linuxlab machines have the
+experimental OpenJDK Java 9 set by default. This program will compile and run on the linuxlab if you take
+the following steps.
 
-1. to compile, execute makefile with `make`
+1. Enable Java 8 on linux by running `addpkg` at the command line and selecting Java 8 in the ensuing GUI.
+
+2. `cd` to the top level of this project.
+    i.e., `ls` should show this file, the Makefile, the writeup, and directories src and tests
+
+3. to compile, execute makefile with `make`
     This will put compiled binaries in [working directory]/out 
 
-2. run the binary with the following command:
+4. run the binary with the following command:
     `scala -cp [working directory]/out Program`
 
 Appropriately formatted text files can be piped into this program, e.g.:
