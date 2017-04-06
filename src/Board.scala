@@ -90,7 +90,8 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
         return true
       }
     }
-    println("No solution found.")
+    //println("No solution found.")
+    println("?")
     false
   }
 

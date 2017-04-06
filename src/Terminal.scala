@@ -82,14 +82,23 @@ class Terminal {
     val ts = tiles.toList
     val num_t = ts.count(_ == T())
 
-    //check for impossible board size or Odd-T short-circuit
+    //check for impossible board dimensions
     if ((h*w)%4 != 0 ){
-      println("Impossible board dimensions.")
+      //println("Impossible board dimensions.")
+      println("?")
       return false
     }
 
+    //incompatible board sizes/bag lengths
+    if ((h*w)/4 != ts.length) {
+      println("?")
+      return false
+    }
+
+    //Odd-T
     if ((num_t-1)%2 == 0) {
-      println("Odd number of Ts. No solution.")
+      //println("Odd number of Ts. No solution.")
+      println("?")
       return false
     }
 
