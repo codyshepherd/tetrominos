@@ -36,6 +36,7 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     st
   }
 
+  /** A pretty-print function supporting the requirements of this assignment.*/
   def fancyPrint: String = {
     val letters = ('a' to 'z').toList.take(solution.length)
     var st = for(i<-Array.range(0,h)) yield for (j<-Array.range(0,w)) yield '#'
@@ -64,6 +65,7 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     str
   }
 
+  /** Sets the marked flag of all cells in grid to false.*/
   def unmarkAll: Boolean = {
     for (row<-grid)
       for (item<-row)
@@ -147,6 +149,7 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     None
   }
 
+  /** A variant of the above function, but finds an unmarked cell rather than an uncovered cell.  */
   private def getNextUnmarkedPos: Option[Pair] = {
     var i = 0
     var j = 0

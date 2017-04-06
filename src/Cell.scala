@@ -3,9 +3,7 @@
   * Created by Cody Shepherd on 4/3/2017.
   */
 
-/** package myCell
-  *
-  * Provides classes for running a Tentrominos game, as well as for various pretty-printing
+/** This file provides classes for running a Tentrominos game, as well as for various pretty-printing
   * of the game to the console.
   *
   * Pair is just a named, boxed tuple representing x,y coordinates. A class is used for this to make
@@ -14,14 +12,16 @@
   * Footprint is a class that represents the shape and orientation of a Tetromino/Tile in terms of its effect on the
   * game board. Any given tile's footprint is abstracted as existing in a 4x4 grid, with the origin being
   * at the upper left corner. All tiles are abstracted as being "pinned" to the upper left corner of this
-  * 4x4 grid. This abstraction ends up assisting the placement of a tile on a board, as each Pair in a
+  * 4x4 grid. Some footprints "hang over" the 4x4 grid, i.e. have a negative offset.
+  * This abstraction ends up assisting the placement of a tile on a board, as each Pair in a
   * tile's footprint can simply be added arithmetically to the single cell location representing the top left corner
   * of intended placement. The convention I am using for enumeration of a Footprint is that all occupied tiles on
   * row i are listed before any on row i+1, and any occupied tile on column j is listed before any on
   * column j+1. Footprint extends Iterable to facilitate use in list comprehensions.
   *
   * Tile is the abstract class from which all Tetrominos inherit. It extends Iterable to facilitate use
-  * in list comprehensions. Polymorphism assists the design of the program in several, probably obvious, ways.
+  * in list comprehensions. Polymorphism assists the design of this program in several, probably obvious, ways,
+  * most having to do with type correctness and compile-time verification.
   *
   * The case classes represent the seven types of Tetrominos, and their various possible orientations (which
   * are enumerated as Footprints). The convention I am using is that the first orientation returned by the iterator

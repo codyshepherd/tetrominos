@@ -1,0 +1,19 @@
+Cody Shepherd
+CS 542
+Writeup Project 1: Tetrominos
+
+My solution for this project was relatively "safe" and straightforward. I used a 2-D array of Cell objects to
+represent the board. I chose to use objects to allow me to track the state of the board in a more fine-grained
+manner than booleans, numbers, or characters, with the goals of facilitating some quicker checks, as well as
+improving correctness and having fewer runtime bugs through use of types and Scala's type system.
+
+The other big choice I made was to build the possible rotational orientations of a given tile into the class of
+the tile itself, as an iterator. Orientations are defined as a list of four Pairs, i.e. grid coordinates.
+This allowed me to view each cell occupied by a tile as an offset from a given grid location, and made looping
+over rotations much simpler.
+
+I treated a given set of tiles as a Bag, i.e. they could be applied in any order. One can see in the code that, if
+necessary, the program will run over every possible permutation. I am not actually sure if the Scala implementation
+of list permutations will detect isomorphisms and optimize those out or not.
+
+See code documentation for a more detailed description of code.

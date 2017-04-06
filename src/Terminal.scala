@@ -13,7 +13,7 @@ class Terminal {
     "exit" -> PartialFunction(exit)
   )
 
-  /** The terminal's runtime loop.  */
+  /** The terminal's runtime loop and/or execution. */
   //while(true) {
     //val line1: List[String] = scala.io.StdIn.readLine("> ").split(" ").toList
     val line1: List[String] = scala.io.StdIn.readLine().split(" ").toList
