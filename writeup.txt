@@ -17,3 +17,50 @@ necessary, the program will run over every possible permutation. I am not actual
 of list permutations will detect isomorphisms and optimize those out or not.
 
 See code documentation for a more detailed description of code.
+
+Copy/Paste of test results follow:
+
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test1-out.txt
+abccccdd
+abbeeedd
+aabfeggg
+hhfffiig
+hhjjjjii
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test1-in.txt | scala -cp /u/cls9/CS542/ai_combinatorial/out Program
+abccccdd
+abbeeedd
+aabfeggg
+hhfffiig
+hhjjjjii
+
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test2-out.txt
+aaabbccdee
+affgbbcdee
+ffggghcdii
+jjjjhhhdii
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test2-in.txt | scala -cp /u/cls9/CS542/ai_combinatorial/out Program
+aaabbccdee
+affgbbcdee
+ffggghcdii
+jjjjhhhdii
+
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test3-out.txt
+abcdeeff
+abcdeeff
+abcdgghh
+abcdgghh
+iijjkkkl
+minjokll
+minjoopl
+mmnnoppp
+cls9@babbage:~/CS542/ai_combinatorial$ cat tests/test3-in.txt | scala -cp /u/cls9/CS542/ai_combinatorial/out Program
+abcdeeff
+abcdeeff
+abcdgghh
+abcdgghh
+iijjkkkl
+minjokll
+minjoopl
+mmnnoppp
+
+cls9@babbage:~/CS542/ai_combinatorial$
