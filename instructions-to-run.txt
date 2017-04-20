@@ -10,9 +10,12 @@ the following steps.
 3. to compile, execute makefile with `make`
     This will put compiled binaries in [working directory]/out 
 
-4. run the binary with the following command:
-    `scala -cp [working directory]/out Program`
+4. run the binary using the included `run.sh` shellscript
+    ./run.sh
 
 Appropriately formatted text files can be piped into this program, e.g.:
 
-    `cat tests/test1-in.txt | scala -cp [working directory]/out Program`
+    ./run.sh < sometest.txt
+
+Note, this shell has been verified to run and pass with the tet-test suite posted on Moodle.
+

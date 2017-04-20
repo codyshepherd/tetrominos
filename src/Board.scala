@@ -80,7 +80,7 @@ class Board ( val h: Int, val w: Int, bag: List[Tile]) {
     for (p<-bag.permutations) {
       if (solve(p)) {
         unmarkAll
-        println(fancyPrint)
+        print(fancyPrint)
         /*
         print(this)
         println("\nSolved!")
